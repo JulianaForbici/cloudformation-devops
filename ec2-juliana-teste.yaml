@@ -1,0 +1,41 @@
+Parameters:
+  EnvironmentType:
+    Type: String
+    AllowedValues:
+      - Prod
+      - Dev
+    Default: Dev
+
+Conditions:
+  IsProd: !Equals [!Ref EnvironmentType, "Prod"]
+
+Resources:
+  JulianaSn:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: sn da juliana - teste
+      VpcId: vpc-06786ee7f7a163059
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: julianasn
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Condition: IsProd
+    Properties:
+      InstanceType: t3.micro
+      ImageId: ami-052064a798f08f0d3
+      NetworkInterfaces:
+        - DeviceIndex: 0
+          SubnetId: subnet-06ad8ff9e17e7bef3
+          AssociatePublicIpAddress: true
+          GroupSet:
+            - !Ref JulianaSn
+      Tags:
+        - Key: Name
+          Value: juliana
