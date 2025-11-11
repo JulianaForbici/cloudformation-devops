@@ -1,4 +1,4 @@
-# ec2-juliana-teste.yaml — README
+# Template de EC2 - Estudos AWS
 
 O template cria um Security Group e, opcionalmente (quando `EnvironmentType = Prod`), uma instância EC2 que faz bootstrap via UserData para clonar um repositório e rodar a aplicação em Docker.
 
