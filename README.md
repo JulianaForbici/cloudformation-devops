@@ -2,18 +2,6 @@
 
 O template cria um Security Group e, opcionalmente (quando `EnvironmentType = Prod`), uma instância EC2 que faz bootstrap via UserData para clonar um repositório e rodar a aplicação em Docker.
 
-Sumário
-- Visão geral
-- Parâmetros
-- Condições
-- Recursos criados
-- Outputs
-- Exemplos de uso (AWS CLI)
-- Recomendações de segurança
-- Troubleshooting
-- Próximos passos sugeridos
-- Contato
-
 Visão geral
 ----------
 O objetivo do template é fornecer um deploy simples e reproduzível para uma aplicação contêinerizada:
